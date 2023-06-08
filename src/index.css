@@ -4,3 +4,24 @@
   list-style: none;
   text-decoration: none;
 }
+.App{
+  text-align: center;
+  
+}
+.App input{
+  margin-top: 10px;
+  font-size: 20px;
+  padding-left: 10px;
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: 3px solid black;
+
+
+}
+.name{
+  margin: 5px;
+  font-size: 18px;
+  font-family: serif;
+  
+}
