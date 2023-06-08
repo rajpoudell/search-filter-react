@@ -25,46 +25,26 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+YThe outermost element is a `<div>` with the class name "App". It serves as a container for the rest of the code.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Inside the `<div>`, there is an `<input>` element of type "text". It has a placeholder attribute set to "search...", which displays the text as a hint to the user.
 
-### `npm run eject`
+The `<input>` element has an onChange event handler attached to it. Whenever the user types or modifies the text in the input field, this event handler will be triggered.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Inside the event handler function, the code is using the setSearchTerm function to update the value of a state variable (likely defined elsewhere in the component). The event.target.value represents the current value of the input field.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The code then uses the `filter()` method on Jsondata, which is presumably an array of objects, to filter the data based on the searchTerm.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The `filter()` method takes a callback function that is called for each element in Jsondata. It checks two conditions:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+a) If searchTerm is an empty string, it returns all the elements, effectively displaying the entire list.
 
-## Learn More
+b) If searchTerm is not empty, it checks if the first_name property of the current element (converted to lowercase) includes the searchTerm (also converted to lowercase). If it does, the element is included in the filtered result.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The filtered array is then mapped over using the `map()` method. For each element `(val)` and its index in the filtered array, a `<div>` element with the `class name "name"` is rendered.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Inside the `<div>`, the val.first_name is displayed as the content of the element.
 
-### Code Splitting
+Each rendered `<div>` element is given a unique key prop using the index from the `map()` function. This helps React efficiently update and reorder the elements when necessary.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Overall, this code creates a search input field that filters a list of data (Jsondata) based on the first_name property. As the user types in the input field, the list dynamically updates to show only the elements whose first_name matches the entered search term.
